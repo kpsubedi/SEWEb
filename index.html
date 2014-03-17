@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Sample Page</title>
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+</head>
+
+<div id="search_area">
+<input type="text" size ="50" id="searchtext" x-webkit-speech></input>
+<button id="searchbtn">Sample Search</button>
+</div>
+<div id="search-result"></div>
+
+<script type="text/javascript">
+$("#searchbtn").click(function(){
+	//alert("Hi");
+	var searchQuery = $("#searchtext").val();
+	//alert("Your Input Query:"+searchQuery);
+	$.ajax({
+		type:'POST',
+		url:'http://127.0.0.1/cgi-bin/first.pl',
+		data: {sendData0: searchQuery},
+		success : function(data){
+			$("#search-result").html(data);
+		}
+
+	});
+
+});
+</script>
+</html>
